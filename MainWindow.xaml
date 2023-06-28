@@ -4,9 +4,24 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ShoeShop"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="ShoeShop" ResizeMode="NoResize" Height="450" Width="800" WindowStartupLocation="CenterScreen" Cursor="Arrow" FontFamily="Tw Cen MT Condensed Extra Bold">
+    <Window.Background>
+        <ImageBrush ImageSource="/tlo.jpg"/>
+    </Window.Background>
 
-    </Grid>
+    <StackPanel>
+        <TextBlock HorizontalAlignment="Left" Margin="55,23,0,20" TextWrapping="Wrap" Text="Login page" VerticalAlignment="Top" FontSize="50" Foreground="white" Height="60" Width="213" />
+        <TextBlock Text="User Login" Foreground="White" TextAlignment="Center" FontSize="40" Height="47"/>
+        <TextBox x:Name="txtUsername" TextWrapping="Wrap" Width="148" Height="28"/>
+        <TextBlock TextWrapping="Wrap" Text="Password" Foreground="White" Margin="294,30,294,0" FontSize="40"  TextAlignment="Center" RenderTransformOrigin="0.533,0.067"/>
+        <PasswordBox Width="148" Height="28"/>
+        <Button BorderThickness="1" BorderBrush="#ffe70d" Background="#000000" Foreground="White" ToolTip="Login" x:Name="Login_btt"  Width="130" Height="25" Content="Login" Margin="0,20,0,0"/>
+        <Button BorderThickness="1" BorderBrush="#ffe70d" Background="#000000" Foreground="White" ToolTip="Login" x:Name="Login2_btt"  Width="130" Height="25" Content="Register" Margin="0,20,0,0"/>
+
+
+    </StackPanel>
+
+
+
+
 </Window>
