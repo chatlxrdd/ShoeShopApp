@@ -32,5 +32,20 @@ namespace ShoeShop
             this.Close();
             r1.Show();
         }
+
+        private void Login_btt_Click(object sender, RoutedEventArgs e)
+        {
+            if (txtUsername.Text == string.Empty || txtPassword.Password == string.Empty)
+            {
+                MessageBox.Show("Wypełnij wszystkie pola!", "Błąd", MessageBoxButton.OK);
+                MainWindow okno = new MainWindow();
+                okno.Show();
+                this.Close();
+            }
+            else
+            {
+                //logowanie przez bazę do UserPanel
+            }
+        }
     }
 }

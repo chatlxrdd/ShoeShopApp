@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -29,6 +30,21 @@ namespace ShoeShop
             MainWindow r1 = new MainWindow();
             this.Close();
             r1.Show();
+        }
+
+        private void Register_btt_Click(object sender, RoutedEventArgs e)
+        {
+            if (Username.Text == string.Empty || Password.Password == string.Empty)
+            {
+                MessageBox.Show("Wypełnij wszystkie pola!", "Błąd", MessageBoxButton.OK);
+                Window1 okno = new Window1();
+                okno.Show();
+                this.Close();
+            }
+            else
+            {
+                //dodawnie usera do bazy
+            }
         }
     }
 }

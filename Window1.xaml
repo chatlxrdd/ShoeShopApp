@@ -11,10 +11,10 @@
         <Button BorderThickness="1" BorderBrush="#ffe70d" Background="#000000" Foreground="White"  x:Name="Loginback_btt" Margin="600,25,0,-50" Width="130" Height="25" Content="Login" Click="Loginback_btt_Click"/>
         <TextBlock HorizontalAlignment="Left" Margin="55,23,0,40" TextWrapping="Wrap" Text="Register page" FontSize="50" Foreground="white" Height="62" Width="263" />
         <TextBlock Text="User Login" Foreground="White" TextAlignment="Center" FontSize="40" Height="47"/>
-        <TextBox x:Name="txtUsername" TextWrapping="Wrap" Width="148" Height="28"/>
+        <TextBox x:Name="Username" TextWrapping="Wrap" Width="148" Height="28"/>
         <TextBlock TextWrapping="Wrap" Text="Password" Foreground="White" Margin="294,30,294,0" FontSize="40"  TextAlignment="Center" RenderTransformOrigin="0.533,0.067"/>
-        <PasswordBox Width="148" Height="28"/>
-        <Button BorderThickness="1" BorderBrush="#ffe70d" Background="#000000" Foreground="White"  x:Name="Register_btt"  Width="130" Height="25" Content="Register" Margin="0,20,0,0"/>
+        <PasswordBox x:Name="Password" Width="148" Height="28"/>
+        <Button BorderThickness="1" BorderBrush="#ffe70d" Background="#000000" Foreground="White"  x:Name="Register_btt"  Width="130" Height="25" Content="Register" Margin="0,20,0,0" Click="Register_btt_Click"/>
 
 
     </StackPanel>
