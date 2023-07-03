@@ -1,6 +1,8 @@
-﻿using Microsoft.Win32;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
+using System.Data;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +14,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Path = System.IO.Path;
+using System.Globalization;
 
 namespace ShoeShop
 {
@@ -43,7 +47,37 @@ namespace ShoeShop
             }
             else
             {
-                //dodawnie usera do bazy
+                try
+                {
+                    string FileName = "Buty.mdf";
+                    string CurrentDirectory = Directory.GetCurrentDirectory();
+                    string ProjectDirectory = Directory.GetParent(Directory.GetParent(Directory.GetParent(CurrentDirectory).FullName).FullName).FullName;
+                    string FilePath = Path.Combine(ProjectDirectory, FileName);
+
+                    string conn = $"Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename={FilePath};Integrated Security=True;Connect Timeout=30;";
+                    SqlConnection con = new SqlConnection(conn);
+
+
+                    con.Open();
+                    string add_data = "INSERT into Uzytkownicy values(@username, @password) ";
+                    SqlCommand cmd = new SqlCommand(add_data, con);
+
+
+                    cmd.Parameters.AddWithValue("@username", Username.Text);
+                    cmd.Parameters.AddWithValue("@password", Password.Password);
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+                    Username.Text = "";
+                    Password.Password = "";
+
+                    MainWindow w1 = new MainWindow();
+                    this.Close();
+                    w1.Show();
+                }
+                catch
+                {
+
+                }
             }
         }
     }
