@@ -47,8 +47,7 @@ namespace ShoeShop
             }
             else
             {
-                try
-                {
+             
                     string FileName = "Buty.mdf";
                     string CurrentDirectory = Directory.GetCurrentDirectory();
                     string ProjectDirectory = Directory.GetParent(Directory.GetParent(Directory.GetParent(CurrentDirectory).FullName).FullName).FullName;
@@ -57,8 +56,8 @@ namespace ShoeShop
                     string conn = $"Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename={FilePath};Integrated Security=True;Connect Timeout=30;";
                     SqlConnection con = new SqlConnection(conn);
 
-
                     con.Open();
+
                     string add_data = "INSERT into Uzytkownicy values(@username, @password) ";
                     SqlCommand cmd = new SqlCommand(add_data, con);
 
@@ -73,11 +72,7 @@ namespace ShoeShop
                     MainWindow w1 = new MainWindow();
                     this.Close();
                     w1.Show();
-                }
-                catch
-                {
 
-                }
             }
         }
     }

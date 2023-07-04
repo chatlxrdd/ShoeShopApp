@@ -8,6 +8,7 @@
 
 
     <StackPanel Background="#FF2B1414">
+        <Button BorderThickness="1" BorderBrush="#ffe70d" Background="#000000" Foreground="White" Width="130" Height="25" Content="Nadchodzące premiery" Margin="590,33,0,-50" Click="Button_Click"/>
         <TextBlock HorizontalAlignment="Left" Margin="55,23,0,20" TextWrapping="Wrap" Text="Login page" VerticalAlignment="Top" FontSize="50" Foreground="white" Height="60" Width="213" />
         <TextBlock Text="User Login" Foreground="White" TextAlignment="Center" FontSize="40" Height="47"/>
         <TextBox x:Name="txtUsername" TextWrapping="Wrap" Width="148" Height="28"/>

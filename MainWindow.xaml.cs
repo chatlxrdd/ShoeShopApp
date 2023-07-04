@@ -47,5 +47,12 @@ namespace ShoeShop
                 //logowanie przez bazę do UserPanel
             }
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Window2 r2 = new Window2();
+            this.Close();
+            r2.Show();
+        }
     }
 }
