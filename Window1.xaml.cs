@@ -58,16 +58,14 @@ namespace ShoeShop
 
                     con.Open();
 
-                    string add_data = "INSERT into Uzytkownicy values(@username, @password) ";
-                    SqlCommand cmd = new SqlCommand(add_data, con);
+                string add_data = "INSERT into Uzytkownicy (LoginID, Login, Haslo) values((SELECT ISNULL(MAX(LoginID), 0) + 1 FROM Uzytkownicy), @username, @password)";
+                SqlCommand cmd = new SqlCommand(add_data, con);
 
 
                     cmd.Parameters.AddWithValue("@username", Username.Text);
                     cmd.Parameters.AddWithValue("@password", Password.Password);
                     cmd.ExecuteNonQuery();
                     con.Close();
-                    Username.Text = "";
-                    Password.Password = "";
 
                     MainWindow w1 = new MainWindow();
                     this.Close();
