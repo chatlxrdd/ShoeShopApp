@@ -8,7 +8,19 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="tlo.jpg" />
+    <None Remove="tlo2.jpg" />
+    <None Remove="tlo3.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="System.Data.SqlClient" Version="4.8.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="tlo.jpg" />
+    <Resource Include="tlo2.jpg" />
+    <Resource Include="tlo3.jpg" />
   </ItemGroup>
 
 </Project>

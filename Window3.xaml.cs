@@ -23,5 +23,12 @@ namespace ShoeShop
         {
             InitializeComponent();
         }
+
+        private void logout_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow u3 = new MainWindow();
+            this.Close();
+            u3.Show();
+        }
     }
 }
