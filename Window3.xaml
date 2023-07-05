@@ -1,0 +1,12 @@
+﻿<Window x:Class="ShoeShop.Window3"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ShoeShop"
+        mc:Ignorable="d"
+        Title="ShoeShop" ResizeMode="NoResize" Height="450" Width="800" WindowStartupLocation="CenterScreen" Cursor="Arrow" FontFamily="Tw Cen MT Condensed Extra Bold">
+    <StackPanel Background="#FF2B1414">
+        <TextBlock HorizontalAlignment="Left" Margin="55,23,0,20" TextWrapping="Wrap" Text="Witaj użytkowniku" FontSize="50" Foreground="white" Height="65" Width="363" />
+    </StackPanel>
+</Window>
