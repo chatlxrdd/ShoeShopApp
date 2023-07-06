@@ -1,27 +1,51 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+using System.Data.SqlClient;
+using System;
 
 namespace ShoeShop
 {
-    /// <summary>
-    /// Logika interakcji dla klasy Window3.xaml
-    /// </summary>
     public partial class Window3 : Window
     {
+        private SqlConnection con;
+
         public Window3()
         {
             InitializeComponent();
+            string FileName = "Buty.mdf";
+            string CurrentDirectory = System.IO.Directory.GetCurrentDirectory();
+            string ProjectDirectory = System.IO.Directory.GetParent(System.IO.Directory.GetParent(System.IO.Directory.GetParent(CurrentDirectory).FullName).FullName).FullName;
+            string FilePath = System.IO.Path.Combine(ProjectDirectory, FileName);
+            string conn = $"Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename={FilePath};Integrated Security=True;Connect Timeout=30;";
+            con = new SqlConnection(conn);
+            con.Open();
+            LoadButyData();
+        }
+
+        private void LoadButyData()
+        {
+            SqlCommand cmd = new SqlCommand("SELECT Nazwa, Producent, NazwaSerii, Rozmiar, Cena FROM Buty", con);
+            SqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                string nazwa = reader.GetString(0);
+                string producent = reader.GetString(1);
+                string nazwaSerii = reader.GetString(2);
+                double rozmiarDouble = reader.GetDouble(3);
+                int rozmiar = Convert.ToInt32(rozmiarDouble);
+                decimal cena = reader.GetDecimal(4);
+                Buty buty = new Buty(nazwa, producent, nazwaSerii, rozmiar, cena);
+                butyListView.Items.Add(buty);
+            }
+            reader.Close();
+        }
+
+        private void KupButton_Click(object sender, RoutedEventArgs e)
+        {
+            Button button = (Button)sender;
+            Buty selectedButy = (Buty)button.DataContext;
+            // dodanie logiki 
+
         }
 
         private void logout_Click(object sender, RoutedEventArgs e)
@@ -29,6 +53,24 @@ namespace ShoeShop
             MainWindow u3 = new MainWindow();
             this.Close();
             u3.Show();
+        }
+    }
+
+    public class Buty
+    {
+        public string Nazwa { get; set; }
+        public string Producent { get; set; }
+        public string NazwaSerii { get; set; }
+        public int Rozmiar { get; set; }
+        public decimal Cena { get; set; }
+
+        public Buty(string nazwa, string producent, string nazwaSerii, int rozmiar, decimal cena)
+        {
+            Nazwa = nazwa;
+            Producent = producent;
+            NazwaSerii = nazwaSerii;
+            Rozmiar = rozmiar;
+            Cena = cena;
         }
     }
 }
