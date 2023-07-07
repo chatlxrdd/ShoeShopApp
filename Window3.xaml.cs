@@ -73,6 +73,11 @@ namespace ShoeShop
         {
             con.Close();
         }
+
+        private void zakupyListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 
     public class Buty

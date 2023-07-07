@@ -22,7 +22,7 @@
 
 
             <TextBlock Text="Dostępne buty" FontSize="36" Foreground="white" Grid.ColumnSpan="2" Margin="88,62,441,-50" />
-            <TextBlock Text="Twoje zakupy" FontSize="36" Foreground="white" Grid.ColumnSpan="2" Margin="543,62,51,-50" />
+            <TextBlock Text="Twoje zakupy" FontSize="36" Foreground="white" Grid.ColumnSpan="2" Margin="510,62,84,-50" />
             <ListView Grid.Column="0" x:Name="butyListView" Grid.ColumnSpan="2" Margin="22,106,429,-196">
                 <ListView.View>
                     <GridView>
@@ -42,7 +42,7 @@
                 </ListView.View>
             </ListView>
 
-            <ListView x:Name="zakupyListView" Margin="528,106,36,-196" Grid.Column="1">
+            <ListView x:Name="zakupyListView" Margin="463,106,36,-196" Grid.Column="1" SelectionChanged="zakupyListView_SelectionChanged">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="Nazwa" DisplayMemberBinding="{Binding Nazwa}"/>
