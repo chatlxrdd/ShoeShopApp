@@ -1,13 +1,15 @@
-﻿using System.Windows;
+﻿using System;
+using System.Collections.ObjectModel;
+using System.Windows;
 using System.Windows.Controls;
 using System.Data.SqlClient;
-using System;
 
 namespace ShoeShop
 {
     public partial class Window3 : Window
     {
         private SqlConnection con;
+        private ObservableCollection<ZakupionyBut> zakupioneButy = new ObservableCollection<ZakupionyBut>();
 
         public Window3()
         {
@@ -20,6 +22,8 @@ namespace ShoeShop
             con = new SqlConnection(conn);
             con.Open();
             LoadButyData();
+
+            zakupyListView.ItemsSource = zakupioneButy;
         }
 
         private void LoadButyData()
@@ -44,8 +48,18 @@ namespace ShoeShop
         {
             Button button = (Button)sender;
             Buty selectedButy = (Buty)button.DataContext;
-            // dodanie logiki 
+            MessageBox.Show($"Zakupiono buty: {selectedButy.Nazwa}");
 
+            ZakupionyBut zakupionyBut = new ZakupionyBut
+            {
+                Nazwa = selectedButy.Nazwa,
+                Producent = selectedButy.Producent,
+                NazwaSerii = selectedButy.NazwaSerii,
+                Rozmiar = selectedButy.Rozmiar,
+                Cena = selectedButy.Cena
+            };
+
+            zakupioneButy.Add(zakupionyBut);
         }
 
         private void logout_Click(object sender, RoutedEventArgs e)
@@ -53,6 +67,11 @@ namespace ShoeShop
             MainWindow u3 = new MainWindow();
             this.Close();
             u3.Show();
+        }
+
+        private void Window3_Closed(object sender, EventArgs e)
+        {
+            con.Close();
         }
     }
 
@@ -72,5 +91,14 @@ namespace ShoeShop
             Rozmiar = rozmiar;
             Cena = cena;
         }
+    }
+
+    public class ZakupionyBut
+    {
+        public string Nazwa { get; set; }
+        public string Producent { get; set; }
+        public string NazwaSerii { get; set; }
+        public int Rozmiar { get; set; }
+        public decimal Cena { get; set; }
     }
 }
